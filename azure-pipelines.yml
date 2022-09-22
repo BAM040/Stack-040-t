@@ -1,0 +1,71 @@
+trigger:
+- main
+
+pool:
+  vmImage: windows-latest
+
+variables:
+  bkstrgrg: 'bam040-tfstate-rg'
+  bkstrg: 'bam040tf8cisz79n'
+  bkcontainer: 'core-tfstate'
+  bkstrgkey: 'devpipeline.terraform.tfstate'
+
+stages:
+  - stage: tfvalidate
+    jobs:
+      - job: validate
+        continueOnError: false
+        steps: 
+
+        - task: TerraformInstaller@0
+          displayName: tfinstall
+          inputs:
+            terraformVersion: 'latest'
+        - task: TerraformTaskV3@3
+          displayName: init
+          inputs:
+            provider: 'azurerm'
+            command: 'init'
+            backendServiceArm: 'DevTestServiceConnection'
+            backendAzureRmResourceGroupName: '$(bkstrgrg)'
+            backendAzureRmStorageAccountName: '$(bkstrg)'
+            backendAzureRmContainerName: '$(core-tfstate)'
+            backendAzureRmKey: '$(bkstrgkey)'
+
+        - task: TerraformTaskV3@3
+          displayName: validate
+          inputs:
+            provider: 'azurerm'
+            command: 'validate'
+  - stage: tfdeploy   
+    condition: succeeded ('tfvalidate')
+    dependsOn: tfvalidate     
+    jobs: 
+      - job: apply
+        steps:
+        - task: TerraformInstaller@0
+          displayName: tfinstall
+          inputs:
+            terraformVersion: 'latest'
+        - task: TerraformTaskV3@3
+          displayName: init
+          inputs:
+            provider: 'azurerm'
+            command: 'init'
+            backendServiceArm: 'DevTestServiceConnection'
+            backendAzureRmResourceGroupName: '$(bkstrgrg)'
+            backendAzureRmStorageAccountName: '$(bkstrg)'
+            backendAzureRmContainerName: '$(core-tfstate)'
+            backendAzureRmKey: '$(bkstrgkey)'  
+        - task: TerraformTaskV3@3
+          displayName: plan
+          inputs:
+            provider: 'azurerm'
+            command: 'plan'
+            environmentServiceNameAzureRM: 'DevTestServiceConnection'
+        - task: TerraformTaskV3@3
+          displayName: apply
+          inputs:
+            provider: 'azurerm'
+            command: 'apply'
+            environmentServiceNameAzureRM: 'DevTestServiceConnection'
