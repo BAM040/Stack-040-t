@@ -6,7 +6,7 @@ pool:
 
 variables:
   bkstrgrg: 'tfstate'
-  bkstrg: 'tfstate09f50'
+  bkstrg: 'tfstatef8sti'
   bkcontainer: 'tfstate'
   bkstrgkey: 'devpipeline.terraform.tfstate'
 
