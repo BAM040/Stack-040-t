@@ -6,8 +6,8 @@ pool:
 
 variables:
   bkstrgrg: 'bam040-tfstate-rg'
-  bkstrg: 'bam040tf8cisz79n'
-  bkcontainer: 'core-tfstate'
+  bkstrg: 'bam040tfstate'
+  bkcontainer: 'bam040tfstatect'
   bkstrgkey: 'devpipeline.terraform.tfstate'
 
 stages:
