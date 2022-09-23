@@ -5,9 +5,9 @@ pool:
   vmImage: windows-latest
 
 variables:
-  bkstrgrg: 'bam040-tfstate-rg'
-  bkstrg: 'bam040tfstate'
-  bkcontainer: 'bam040tfstatect'
+  bkstrgrg: 'tfstate'
+  bkstrg: 'tfstateg4r0k'
+  bkcontainer: 'tfstate'
   bkstrgkey: 'devpipeline.terraform.tfstate'
 
 stages:
