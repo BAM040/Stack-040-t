@@ -29,7 +29,7 @@ stages:
             backendServiceArm: 'DevTestServiceConnection'
             backendAzureRmResourceGroupName: '$(bkstrgrg)'
             backendAzureRmStorageAccountName: '$(bkstrg)'
-            backendAzureRmContainerName: '$(core-tfstate)'
+            backendAzureRmContainerName: '$(bkcontainer)'
             backendAzureRmKey: '$(bkstrgkey)'
 
         - task: TerraformTaskV3@3
@@ -55,7 +55,7 @@ stages:
             backendServiceArm: 'DevTestServiceConnection'
             backendAzureRmResourceGroupName: '$(bkstrgrg)'
             backendAzureRmStorageAccountName: '$(bkstrg)'
-            backendAzureRmContainerName: '$(core-tfstate)'
+            backendAzureRmContainerName: '$(bkcontainer)'
             backendAzureRmKey: '$(bkstrgkey)'  
         - task: TerraformTaskV3@3
           displayName: plan
