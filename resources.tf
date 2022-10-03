@@ -39,3 +39,39 @@ resource "azurerm_firewall" "fw040" {
     public_ip_address_id = azurerm_public_ip.fw040.id
   }
 }
+
+resource "azurerm_network_interface" "fw-040" {
+  name                = "fw-040-nic"
+  location            = azurerm_resource_group.fw-040.location
+  resource_group_name = azurerm_resource_group.fw-040.name
+
+  ip_configuration {
+    name                          = "internal"
+    subnet_id                     = azurerm_subnet.fw-040.id
+    private_ip_address_allocation = "Dynamic"
+  }
+}
+
+resource "azurerm_windows_virtual_machine" "fw-040" {
+  name                = "firewall-vm"
+  resource_group_name = azurerm_resource_group.fw-040.name
+  location            = azurerm_resource_group.fw-040.location
+  size                = "Standard_F2"
+  admin_username      = "gaber"
+  admin_password      = "Owkeejdann_040"
+  network_interface_ids = [
+    azurerm_network_interface.fw-040.id,
+  ]
+
+  os_disk {
+    caching              = "ReadWrite"
+    storage_account_type = "Standard_LRS"
+  }
+
+  source_image_reference {
+    publisher = "MicrosoftWindowsServer"
+    offer     = "WindowsServer"
+    sku       = "2019-Datacenter"
+    version   = "latest"
+  }
+}
