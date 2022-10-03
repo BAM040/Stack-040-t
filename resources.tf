@@ -1,11 +1,6 @@
-variable "resource_group_name" {
-    type = string
-    description = "please enter rg name"
-  
-}
 
 resource "azurerm_resource_group" "fw040" {
-  name     = var.resource_group_name
+  name     = "firewallgroup"
   location = "West Europe"
 }
 
