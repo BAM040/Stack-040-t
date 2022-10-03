@@ -81,8 +81,3 @@ resource "azurerm_windows_virtual_machine" "fw-040" {
     version   = "latest"
   }
 }
-
-resource "azurerm_resource_group" "fw-0403" {
-  name     = "testinggg"
-  location = "West Europe"
-}
