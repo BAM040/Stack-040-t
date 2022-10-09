@@ -1,8 +1,6 @@
-resource "azurerm_resource_group" "fw-040" {
-  name     = "firewallgroup"
-  location = "West Europe"
-  tags = {
-    environment = "testing"
-  }
-}
+resource "azurerm_resource_group" "lets-go" {
+    name = "letsgo"
+    location = "west europe"
 
+  
+}
