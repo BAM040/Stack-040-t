@@ -94,7 +94,7 @@ resource "azurerm_windows_virtual_machine" "main" {
   location              = azurerm_resource_group.lets-go.location
   resource_group_name   = azurerm_resource_group.lets-go.name
   network_interface_ids = [azurerm_network_interface.my_terraform_nic.id]
-  size                  = "Standard_DS1_v2"
+  size                  = "Standard_B1s"
 
   os_disk {
     name                 = "myOsDisk"
@@ -105,7 +105,7 @@ resource "azurerm_windows_virtual_machine" "main" {
   source_image_reference {
     publisher = "MicrosoftWindowsServer"
     offer     = "WindowsServer"
-    sku       = "2022-datacenter-azure-edition"
+    sku       = "2019-Datacenter"
     version   = "latest"
   }
 
