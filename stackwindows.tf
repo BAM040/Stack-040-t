@@ -1,7 +1,7 @@
 #refer to a resource group
 data "azurerm_resource_group" "lets-go" {
     name = "letsgo"
-    location = "west europe"
+    
 }
 
 resource "azurerm_virtual_network" "lets-go" {
