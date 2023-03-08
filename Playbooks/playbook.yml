@@ -1,0 +1,8 @@
+- name: "Chocolatey"
+  hosts: localhost
+  tasks:
+    - name: Install Google Chrome
+      win_chocolatey:
+          name: googlechrome
+          state: present
+          ignore_checksums: yes

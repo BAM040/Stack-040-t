@@ -1,4 +1,4 @@
-data "azurerm_resource_group" "lets-go" {
+/*data "azurerm_resource_group" "lets-go" {
   name     = "${random_pet.prefix.id}-lets-go"
 }
 
@@ -141,16 +141,16 @@ resource "random_id" "random_id" {
   byte_length = 8
 }
 
-/*resource "random_password" "password" {
+resource "random_password" "password" {
   length      = 20
   min_lower   = 1
   min_upper   = 1
   min_numeric = 1
   min_special = 1
   special     = true
-}*/
+}
 
 resource "random_pet" "prefix" {
   prefix = var.prefix
   length = 1
-}
+}*/
