@@ -3,7 +3,7 @@ variable "resource_group_location" {
   description = "Location of the resource group."
 }
 
-variable "prefix" {
+/*variable "prefix" {
   type        = string
   default     = "Bam-040"
   description = "Prefix of the resource name"
@@ -19,4 +19,4 @@ variable "admin_password" {
   type        = string
   default     = "Owkeejdann_040"
   description = "Prefix of admin username"
-}
+}*/
