@@ -1,6 +1,7 @@
 #refer to a resource group
-/*data "azurerm_resource_group" "lets-go" {
+data "azurerm_resource_group" "lets-go" {
     name = "letsgo"
+    location = "west europe"
 }
 
 resource "azurerm_virtual_network" "lets-go" {
@@ -51,4 +52,4 @@ resource "azurerm_windows_virtual_machine" "lets-go" {
     sku       = "2019-Datacenter"
     version   = "latest"
   }
-}*/
+}
